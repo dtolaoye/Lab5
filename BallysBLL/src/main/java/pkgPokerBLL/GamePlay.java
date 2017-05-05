@@ -31,6 +31,7 @@ public class GamePlay implements Serializable {
 	private Player PlayerNextToAct = null;
 	private eDrawCount eDrawCountLast;
 	private eGameState eGameState;
+	private int newMove = 1;
 
 	public GamePlay(Rule rle, UUID GameDealerID) {
 		this.setGameID(UUID.randomUUID());
@@ -193,7 +194,7 @@ public class GamePlay implements Serializable {
 	
 	public void DealByRule() {
 		
-		int[] DrawOrder = GamePlay.GetOrder(nextPlayerPos);
+		int[] DrawOrder = GamePlay.GetOrder(newMove);
 		eDrawCountLast = eDrawCount.geteDrawCount(eDrawCountLast.getDrawNo() + 1);
 		CardDraw card = this.rle.GetDrawCard(eDrawCountLast);
 
